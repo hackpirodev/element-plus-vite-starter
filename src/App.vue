@@ -1,23 +1,57 @@
 <template>
   <el-config-provider namespace="ep">
-    <BaseHeader />
-    <div class="flex main-container">
-      <BaseSide />
-      <div w="full" py="4">
-        <Logos my="4" />
-        <HelloWorld msg="Hello Vue 3 + Element Plus + Vite" />
+    <h1>selecteds not active</h1>
+    <div style="display: flex; width: 100%; justify-content: space-around">
+      <div>
+        <h3>selected items</h3>
+        <pre>{{ selecteds }}</pre>
+      </div>
+      <div>
+        <h3>options</h3>
+        <pre>{{ options }}</pre>
       </div>
     </div>
+    <el-select v-model="selecteds" multiple placeholder="Select">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
   </el-config-provider>
 </template>
 
-<style>
-#app {
-  text-align: center;
-  color: var(--ep-text-color-primary);
-}
+<script lang="ts" setup>
+import { ref } from "vue";
 
-.main-container {
-  height: calc(100vh - var(--ep-menu-item-height) - 3px);
-}
-</style>
+const selecteds = ref([
+  {
+    value: "Option1",
+    label: "Option1",
+  },
+]);
+
+const options = [
+  {
+    value: "Option1",
+    label: "Option1",
+  },
+  {
+    value: "Option2",
+    label: "Option2",
+  },
+  {
+    value: "Option3",
+    label: "Option3",
+  },
+  {
+    value: "Option4",
+    label: "Option4",
+  },
+  {
+    value: "Option5",
+    label: "Option5",
+  },
+];
+</script>
